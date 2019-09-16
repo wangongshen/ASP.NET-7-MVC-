@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="itcastModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="itcastModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AdminLogin">
           <Key>
             <PropertyRef Name="ID" />
@@ -13,11 +13,23 @@
           <Property Name="AdminName" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Pwd" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
+        <EntityType Name="Book">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="bookNum" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="bookName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="bookConcern" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="bookAuthor" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="bookCount" Type="int" Nullable="false" />
+          <Property Name="bookPrice" Type="decimal" Precision="18" Scale="1" Nullable="false" />
+        </EntityType>
         <EntityContainer Name="itcastModelStoreContainer">
           <EntitySet Name="AdminLogin" EntityType="Self.AdminLogin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Book" EntityType="Self.Book" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="itcastModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -31,7 +43,20 @@
         </EntityType>
         <EntityContainer Name="itcastEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AdminLogin" EntityType="Self.AdminLogin" />
+          <EntitySet Name="Book" EntityType="itcastModel.Book" />
         </EntityContainer>
+        <EntityType Name="Book">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="bookNum" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="bookName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="bookConcern" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="bookAuthor" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="bookCount" Type="Int32" Nullable="false" />
+          <Property Name="bookPrice" Type="Decimal" Nullable="false" Precision="18" Scale="1" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -44,6 +69,19 @@
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="AdminName" ColumnName="AdminName" />
                 <ScalarProperty Name="Pwd" ColumnName="Pwd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Book">
+            <EntityTypeMapping TypeName="itcastModel.Book">
+              <MappingFragment StoreEntitySet="Book">
+                <ScalarProperty Name="bookPrice" ColumnName="bookPrice" />
+                <ScalarProperty Name="bookCount" ColumnName="bookCount" />
+                <ScalarProperty Name="bookAuthor" ColumnName="bookAuthor" />
+                <ScalarProperty Name="bookConcern" ColumnName="bookConcern" />
+                <ScalarProperty Name="bookName" ColumnName="bookName" />
+                <ScalarProperty Name="bookNum" ColumnName="bookNum" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

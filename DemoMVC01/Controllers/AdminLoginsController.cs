@@ -57,7 +57,7 @@ namespace DemoMVC01.Controllers
             else {
                 if (user.Pwd==admin.Pwd)
                 {
-                    return RedirectToAction("index",user);
+                    return RedirectToAction("Index", "Books",user);
                 }
                 else
                 {

@@ -1,0 +1,66 @@
+﻿@model IEnumerable<DemoMVC01.Models.Book>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>书籍列表</h2>
+
+<p style="font-size:20px">
+    @Html.ActionLink("新增", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            编号
+        </th>
+        <th>
+            名称
+        </th>
+        <th>
+            出版社
+        </th>
+        <th>
+            作者
+        </th>
+        <th>
+            总数量
+        </th>
+        <th>
+            价格
+        </th>
+        <th>
+            操作
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.bookNum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.bookName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.bookConcern)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.bookAuthor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.bookCount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.bookPrice)
+            </td>
+            <td>
+                @Html.ActionLink("编辑", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("详情", "Details", new { id = item.ID }) |
+                @Html.ActionLink("删除", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
+
+</table>

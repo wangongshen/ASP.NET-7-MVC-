@@ -17,6 +17,8 @@ namespace DemoMVC01
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "AdminLogins", action = "Login", id = UrlParameter.Optional }
+                //constraints: new {Controller=@"Home",Action=@"Index|Test"},//表示控制器为Home，action为Index或Test，那么其他的action就匹配不到
+                //namespaces:new string[] {"MvcApplication1.Controllers"} //表示到指定的命名空间下去搜索控制器
             );
         }
     }

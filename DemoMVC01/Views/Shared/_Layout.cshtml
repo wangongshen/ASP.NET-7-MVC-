@@ -1,43 +1,277 @@
 ﻿<!DOCTYPE html>
+@using System.Web.Optimization
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - 我的 ASP.NET 应用程序</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.title</title>
+    <style type="text/css">
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: #666;
+            font-size: 12px;
+            margin: 0;
+            line-height: 16px;
+            background: #fff url(~/Content/Images/Index/black_alpha.png) repeat-x top left;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        #top {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 70px;
+            background-color: #303030;
+        }
+
+        #top_logo {
+            width: 300px;
+            float: left;
+            vertical-align: middle;
+            height: 70px;
+            line-height: 70px;
+            padding: 1px 3px 3px 40px;
+        }
+
+        #top_links {
+            width: 300px;
+            height: 65px;
+            float: right;
+            line-height: 65px;
+            color: #ADADAD;
+            line-height: 65px;
+            position: relative;
+        }
+
+        #top_op {
+            width: 250px;
+        }
+
+            #top_op ul {
+                list-style-type: none;
+            }
+
+                #top_op ul li {
+                    display: inline-block;
+                    margin-right: 5px;
+                }
+
+                    #top_op ul li img {
+                        vertical-align: middle
+                    }
+
+        #top_links a:link, #nav_links a:visited, #nav_links a:hover, #nav_links a:active {
+            list-style: none;
+            text-decoration: none;
+            color: #fff;
+        }
+
+        #top_links a:hover {
+            list-style: none;
+            text-decoration: underline;
+            color: #fff;
+        }
+
+        #top_close {
+            width: 80px;
+            position: absolute;
+            right: 0px;
+            top: 0px;
+            border-left: 1px solid #171717;
+            vertical-align: middle;
+        }
+
+        table {
+            padding: 0;
+            margin: 0;
+            position: relative;
+            margin: 0 auto;
+        }
+
+        tr th {
+            background: #044599 no-repeat;
+            text-align: center;
+            border-left: 1px solid #02397F;
+            border-right: 1px solid #02397F;
+            border-bottom: 1px solid #02397F;
+            border-top: 1px solid #02397F;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-size: 14px;
+            color: #fff;
+            height: 37px;
+        }
+
+        tr td {
+            text-align: center;
+            border-left: 1px solid #ECECEC;
+            border-right: 1px solid #ECECEC;
+            border-bottom: 1px solid #ECECEC;
+            font-size: 15px;
+            color: #909090;
+            height: 37px;
+        }
+
+        #main {
+            position: absolute;
+            left: 220px;
+            top: 140px;
+            bottom: 0px;
+            right: 0px;
+            width: auto;
+            z-index: 2;
+            overflow: hidden;
+        }
+
+        #side {
+            position: absolute;
+            left: 0;
+            top: 70px;
+            bottom: 0px;
+            width: 180px;
+            overflow: hidden;
+        }
+
+
+        #left_menu_cnt {
+            width: 180px;
+            position: absolute;
+            top: 0px;
+            bottom: 0px;
+            left: 0px;
+            overflow: auto;
+            background: #F1F1F1;
+        }
+
+            #left_menu_cnt #nav_module {
+                position: fixed;
+                padding-left: 10px;
+                background: #F1F1F1;
+            }
+
+            #left_menu_cnt #nav_resource {
+                margin-top: 60px;
+                overflow: auto;
+            }
+
+        table {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: "Microsoft Yahei";
+        }
+
+        #bottom {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 70px;
+            background-color: #303030;
+            text-align: center;
+            color: white;
+            margin-top: 30px;
+        }
+
+        #top_nav {
+            position: fixed;
+            width: 77%;
+            top: 70px;
+            left: 304px;
+            height: 58px;
+            line-height: 70px;
+            color: #8A8A8A;
+            font-size: 14px;
+            border-bottom: 1px solid #EDEDED;
+        }
+
+        #dleft_tab1 li {
+            padding: 5px;
+            margin: 0;
+            list-style: none;
+            line-height: 14px;
+            text-align: center;
+            white-space: nowrap;
+            outline: 0;
+        }
+    </style>
+    <script src="~/Scripts/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('#TabPage2 li').click(function () {
+                var index = $(this).index();
+                $(this).find('img').attr('src', 'images/common/' + (index + 1) + '_hover.jpg');
+                $(this).css({ background: '#fff' });
+                $('#nav_module').find('img').attr('src', 'images/common/module_' + (index + 1) + '.png');
+                $('#TabPage2 li').each(function (i, ele) {
+                    if (i != index) {
+                        $(ele).find('img').attr('src', 'images/common/' + (i + 1) + '.jpg');
+                        $(ele).css({ background: '#044599' });
+                    }
+                });
+            });
+        });
+    </script>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("应用程序名称", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+    <div id="top">
+        <div id="top_logo">
+            <img alt="logo" src="~/Content/Images/Index/logo.gif" style="vertical-align:middle;">
+        </div>
+        <div id="top_links">
+            <div id="top_op">
+                <ul>
+                    <li>
+                        <img alt="当前用户" src="~/Content/Images/Index/user.jpg">
+                        <span>admin</span>
+                    </li>
+                    <li>
+                        <img alt="今天是" src="~/Content/Images/Index/date.jpg">
+                        <span id="day_day">@DateTime.Now.ToLongDateString()</span>
+                    </li>
+                </ul>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("主页", "Index", "Home")</li>
-                    <li>@Html.ActionLink("关于", "About", "Home")</li>
-                    <li>@Html.ActionLink("联系方式", "Contact", "Home")</li>
+            <div id="top_close">
+                <a href="/AdminLogin/Login" target="_parent">
+                    <img alt="退出系统" title="退出系统" src="~/Content/Images/Index/close.jpg" style="position: relative; top: 10px; left: 25px;">
+                </a>
+            </div>
+        </div>
+    </div>
+    <div id="side">
+        <div id="left_menu_cnt">
+            <div id="nav_resource">
+                <ul id="dleft_tab1">
+                    <li>计算机图书</li>
+                    <li>.NET学科</li>
+                    <li>PHP学科</li>
+                    <li>Java学科</li>
+                    <li>网页学科</li>
+                    <li>IOS学科</li>
+                    <li>安卓学科</li>
                 </ul>
             </div>
         </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - 我的 ASP.NET 应用程序</p>
-        </footer>
+    <div id="top_nav" style="width:75%;">
+        <span id="here_area">当前位置：</span>
+        <span style="float:right">
+            @RenderSection("link", required: false)
+        </span>
     </div>
+    <div id="main" style="clear:both;">
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+        @RenderBody()
+        @Scripts.Render("~/bundles/jquery")
+        @RenderSection("scripts", required: false)
+    </div>
+    <div id="bottom">
+        Copyright ? 2017 jift.edu.cn
+    </div>
 </body>
 </html>

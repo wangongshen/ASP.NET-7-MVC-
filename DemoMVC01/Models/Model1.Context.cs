@@ -26,5 +26,6 @@ namespace DemoMVC01.Models
         }
     
         public virtual DbSet<AdminLogin> AdminLogin { get; set; }
+        public virtual DbSet<Book> Book { get; set; }
     }
 }

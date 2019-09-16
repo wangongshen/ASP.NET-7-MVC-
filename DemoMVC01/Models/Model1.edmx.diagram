@@ -6,6 +6,7 @@
     <edmx:Diagrams>
       <Diagram DiagramId="8e641d486c3c41fcb4e22226d9244dca" Name="Diagram1">
         <EntityTypeShape EntityType="itcastModel.AdminLogin" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="itcastModel.Book" Width="1.5" PointX="3.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
