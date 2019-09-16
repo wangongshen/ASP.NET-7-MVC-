@@ -1,39 +1,35 @@
-﻿@model IEnumerable<DemoMVC01.Models.AdminLogin>
+﻿@model DemoMVC01.Models.AdminLogin
 
 @{
-    ViewBag.Title = "Index";
+    Layout = null;
 }
 
-<h2>Index</h2>
+<!DOCTYPE html>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.AdminName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Pwd)
-        </th>
-        <th></th>
-    </tr>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body style="text-align: center; background: #4974A4; ">
+    <div style="font-weight: bold;font-size: 28px;">
+        <span>
+            欢迎 @Model.AdminName;  日期：@DateTime.Now.ToString("yyyy-MM-dd")
+            @DateTime.Now.DayOfWeek
+        </span>
+        <br />
+        @* @if (@Model.ID>3)
+            {
+                int i = 1;
+                @i;
+            }
+             else
+             {
+                 int i = 2;
+                @i;
+            }*@
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.AdminName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Pwd)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
 
-</table>
+    </div>
+</body>
+</html>

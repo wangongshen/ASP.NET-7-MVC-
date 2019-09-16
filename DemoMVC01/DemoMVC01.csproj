@@ -238,8 +238,8 @@
     <Content Include="Views\AdminLogins\Delete.cshtml" />
     <Content Include="Views\AdminLogins\Details.cshtml" />
     <Content Include="Views\AdminLogins\Edit.cshtml" />
-    <Content Include="Views\AdminLogins\Index.cshtml" />
     <Content Include="Views\AdminLogins\Login.cshtml" />
+    <Content Include="Views\AdminLogins\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

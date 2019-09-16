@@ -68,9 +68,13 @@ namespace DemoMVC01.Controllers
         }
 
         // GET: AdminLogins
-        public ActionResult Index()
+        public ActionResult Index(AdminLogin admin)
         {
-            return View(db.AdminLogin.ToList());
+            //将获得的用户名存储到viewBag中
+            //ViewBag.UserName = admin.AdminName;
+           // ViewData["name"] = admin.AdminName;
+            ViewData.Model = admin;
+            return View();
         }
 
         // GET: AdminLogins/Details/5
